@@ -4,7 +4,7 @@ import os
 import shutil
 from pathlib import Path
 
-from apppath.utilities import get_system, ensure_existence, get_win_folder, sanitise_path
+from apppath.utilities import ensure_existence, get_system, get_win_folder, sanitise_path
 
 __author__ = "Christian Heider Nielsen"
 __doc__ = "Application data directories extension for pathlib"

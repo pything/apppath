@@ -7,14 +7,13 @@ __doc__ = r"""
            Created on 31-01-2021
            """
 
-import subprocess
-import sys
 from enum import Enum
-from pathlib import Path
 
 from apppath.app_path import AppPath
 
-__all__ = ["AppPathSubDirEnum", "open_app_path", "system_open_path"]
+__all__ = ["AppPathSubDirEnum", "open_app_path"]
+
+from warg.os.path_utilities import system_open_path
 
 
 class AppPathSubDirEnum(Enum):
@@ -24,24 +23,6 @@ class AppPathSubDirEnum(Enum):
     config = "config"
     cache = "cache"
     log = "log"
-
-
-def system_open_path(path: Path, *, verbose: bool = False) -> None:
-    """description"""
-    directory = str(path)
-    if verbose:
-        print(f"Opening the directory ({directory}) using the systems default file manager")
-
-    if sys.platform == "win32":
-        subprocess.Popen(["start", directory], shell=True)
-
-    elif sys.platform == "darwin":
-        subprocess.Popen(["open", directory])
-
-    else:
-        # try:
-        subprocess.Popen(["xdg-open", directory])
-        # except OSError:
 
 
 def open_app_path(
