@@ -1,27 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import enum
-import sys
 
 __author__ = "Christian Heider Nielsen"
 __doc__ = ""
 
-__all__ = ["get_win_folder", "get_system", "set_system", "SystemEnum"]
+__all__ = ["get_win_folder"]
 
 from typing import Any
 
-
-class SystemEnum(enum.Enum):
-    """
-    Enum for the system type
-    """
-
-    windows, linux, mac, other = range(4)
-
-
-def is_py3():
-    return sys.version_info[0] == 3
-
+from warg.os.platform_selection import SYSTEM_, is_py3
 
 if is_py3():
     unicode = str
@@ -142,22 +129,6 @@ def _get_win_folder_with_jna(csidl_name: Any) -> Any:
 get_win_folder = None
 
 
-if sys.platform.startswith("java"):
-    import platform
-
-    os_name = platform.java_ver()[3][0]
-    if os_name.startswith("Windows"):  # "Windows XP", "Windows 7", etc.
-        SYSTEM_ = "win32"
-    elif os_name.startswith("Mac"):  # "Mac OS X", etc.
-        SYSTEM_ = "darwin"
-    else:  # "Linux", "SunOS", "FreeBSD", etc.
-        # Setting this to "linux2" is not ideal, but only Windows or Mac
-        # are actually checked for and the rest of the module expects
-        # *sys.platform* style strings.
-        SYSTEM_ = "linux2"
-else:
-    SYSTEM_ = sys.platform
-
 if SYSTEM_ == "win32":  # IMPORT TESTS
     try:
         from win32com import shell
@@ -175,25 +146,3 @@ if SYSTEM_ == "win32":  # IMPORT TESTS
                 get_win_folder = _get_win_folder_with_jna
             except ImportError:
                 get_win_folder = _get_win_folder_from_registry
-
-SYSTEM = SYSTEM_
-
-
-def set_system(system: SystemEnum) -> None:
-    global SYSTEM
-    SYSTEM = system
-
-
-def get_system() -> SystemEnum:
-    return SYSTEM
-
-
-# print(SYSTEM)
-if SYSTEM == "darwin":
-    SYSTEM = SystemEnum.mac
-elif SYSTEM == "linux2" or SYSTEM == "linux":
-    SYSTEM = SystemEnum.linux
-elif SYSTEM == "win32":
-    SYSTEM = SystemEnum.windows
-else:
-    SYSTEM = SystemEnum.other

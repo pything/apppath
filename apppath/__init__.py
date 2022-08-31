@@ -22,7 +22,6 @@ A class and a set of functions for providing for system-consensual path for apps
 
 from typing import Any
 from .app_path import *
-from .utilities import *
 from .system_open_path_utilities import *
 
 

@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
-import shutil
-from pathlib import Path
 
-from apppath.utilities import get_system, ensure_existence, get_win_folder, sanitise_path
 
 __author__ = "Christian Heider Nielsen"
 __doc__ = "Application data directories extension for pathlib"
 
 __all__ = ["AppPath"]
 
-from apppath.utilities.windows_path_utilities import SystemEnum
+import os
+import shutil
+from pathlib import Path
+
+from apppath.windows_path_utilities import get_win_folder
+from warg import ensure_existence, sanitise_path
+from warg.os.platform_selection import SystemEnum, get_system
 
 
 class AppPath(object):
