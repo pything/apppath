@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from typing import List, Sequence, Union
+from typing import List, Sequence, Union, TextIO
 
 
 def python_version_check(major: int = 3, minor: int = 7):
