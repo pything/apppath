@@ -17,7 +17,17 @@ A class and a set of functions for providing for system-consensual path for apps
 @author: cnheider
 """
 
-# __all__ = ["PROJECT_APP_PATH", "PROJECT_NAME", "PROJECT_VERSION", "get_version"]
+__all__ = [
+    "PROJECT_APP_PATH",
+    "PROJECT_NAME",
+    "PROJECT_VERSION",
+    "get_version",
+    "PROJECT_ORGANISATION",
+    "PROJECT_AUTHOR",
+    "PROJECT_YEAR",
+    # "INCLUDE_PROJECT_READMES",
+    # "PACKAGE_DATA_PATH"
+]
 
 
 from typing import Any
@@ -42,6 +52,7 @@ PROJECT_NAME = __project__.lower().strip().replace(" ", "_")
 PROJECT_VERSION = __version__
 PROJECT_YEAR = 2018
 PROJECT_AUTHOR = __author__.lower().strip().replace(" ", "_")
+PROJECT_ORGANISATION = "Pything"
 
 distributions = {v.key: v for v in pkg_resources.working_set}
 if PROJECT_NAME in distributions:
