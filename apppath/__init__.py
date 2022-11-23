@@ -25,10 +25,12 @@ __all__ = [
     "PROJECT_ORGANISATION",
     "PROJECT_AUTHOR",
     "PROJECT_YEAR",
+    "Apppath",
+    "AppPathSubDirEnum",
+    "open_app_path"
     # "INCLUDE_PROJECT_READMES",
     # "PACKAGE_DATA_PATH"
 ]
-
 
 from typing import Any
 from .app_path import *
