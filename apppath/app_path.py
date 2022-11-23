@@ -18,7 +18,7 @@ from warg.os.platform_selection import SystemEnum, get_system
 
 class AppPath(object):
     r"""
-    AppPath class for easing cross platform access to proper app data directories
+    AppPath class for easing cross-platform access to proper app data directories
     This class is an abstraction for getting system conventional application paths for data, logs, etc."""
 
     def __init__(
