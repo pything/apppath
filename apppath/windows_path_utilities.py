@@ -8,7 +8,7 @@ __all__ = ["get_win_folder"]
 
 from typing import Any
 
-from warg.os.platform_selection import SYSTEM_, is_py3
+from warg.os_utilities.platform_selection import SYSTEM_, is_py3
 
 if is_py3():
     unicode = str

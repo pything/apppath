@@ -13,7 +13,7 @@ from apppath.app_path import AppPath
 
 __all__ = ["AppPathSubDirEnum", "open_app_path"]
 
-from warg.os.path_utilities import system_open_path
+from warg.os_utilities.path_utilities import system_open_path
 
 
 class AppPathSubDirEnum(Enum):

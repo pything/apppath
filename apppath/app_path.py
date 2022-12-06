@@ -13,7 +13,7 @@ from pathlib import Path
 
 from apppath.windows_path_utilities import get_win_folder
 from warg import ensure_existence, sanitise_path
-from warg.os.platform_selection import SystemEnum, get_system
+from warg.os_utilities.platform_selection import SystemEnum, get_system
 
 
 class AppPath(object):

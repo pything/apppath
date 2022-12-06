@@ -8,7 +8,7 @@ import pkg_resources
 
 __project__ = "Apppath"
 __author__ = "Christian Heider Nielsen"
-__version__ = "0.6.5"
+__version__ = "0.6.7"
 __doc__ = r"""
 Created on 27/04/2019
 
@@ -25,7 +25,7 @@ __all__ = [
     "PROJECT_ORGANISATION",
     "PROJECT_AUTHOR",
     "PROJECT_YEAR",
-    "Apppath",
+    "AppPath",
     "AppPathSubDirEnum",
     "open_app_path"
     # "INCLUDE_PROJECT_READMES",
