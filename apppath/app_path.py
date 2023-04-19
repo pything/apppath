@@ -86,23 +86,38 @@ class AppPath(object):
         :param multi_path: "multi_path" is an optional parameter only applicable to *nix which indicates that the entire list of data dirs should be returned. By default, the first item from XDG_DATA_DIRS is returned, or '/usr/local/share/<AppName>', if XDG_DATA_DIRS is not set
         :param ensure_existence_on_access:
         :param normalise_path:"""
-        assert isinstance(app_name, str)
+        assert isinstance(app_name, str), f"app_name must be a str, not {type(app_name)}"
 
         self._sanitise_path = normalise_path
+
         if normalise_path:
             app_name = app_name.strip().lower().replace(" ", "_")
+
         self._app_name = app_name
-        if isinstance(app_author, str):
-            if normalise_path:
-                app_author = app_author.strip().lower().replace(" ", "_")
-        else:
-            assert app_author is None
+
+        if app_author:
+            if isinstance(app_author, str):
+                if normalise_path:
+                    app_author = app_author.strip().lower().replace(" ", "_")
+            else:
+                assert (
+                    app_author is None
+                ), f"{type(app_author)} is not accepted as app_author, must be of type str or None"
+
         self._app_author = app_author
-        if isinstance(app_version, (int, float)):
-            app_version = str(app_version)
-        if isinstance(app_version, str):
-            if normalise_path:
-                app_version = app_version.strip().lower().replace(" ", "_")
+
+        if app_version:
+            if isinstance(app_version, (int, float)):
+                app_version = str(app_version)
+
+            if isinstance(app_version, str):
+                if normalise_path:
+                    app_version = app_version.strip().lower().replace(" ", "_")
+            else:
+                raise TypeError(
+                    f"app_version was of type {type(app_version)}, only int, float and str is supported"
+                )
+
         self._app_version = app_version
         self._roaming = roaming
         self._multi_path = multi_path
