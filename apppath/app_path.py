@@ -212,7 +212,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/var/cache") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -222,7 +222,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/etc") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -232,7 +232,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/var/log") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -242,7 +242,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/var/lib") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -252,7 +252,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/run") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -262,7 +262,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/tmp") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -272,7 +272,7 @@ class AppPath(object):
         :return:
         """
         if get_system() != SystemEnum.linux:
-            raise SystemError("Invalid system")
+            raise SystemError(f"Invalid system: {get_system()}\n Expected {SystemEnum.linux}")
         return ensure_existence(Path("/var/tmp") / self._app_name, enabled=self._ensure_existence)
 
     @property
@@ -391,8 +391,6 @@ class AppPath(object):
             path_ = Path(os.getenv("XDG_DATA_HOME", Path.home() / ".local" / "share"))
         else:
             raise SystemError(f"Invalid system {get_system()}")
-
-        print(get_system())
 
         if app_author:
             path_ = path_ / app_author

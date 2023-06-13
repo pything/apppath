@@ -128,7 +128,6 @@ def _get_win_folder_with_jna(csidl_name: Any) -> Any:
 
 get_win_folder = None
 
-
 if SYSTEM_ == "win32":  # IMPORT TESTS
     try:
         from win32com import shell
