@@ -136,7 +136,6 @@ html_theme_options = {
     # "display_version": False,
 }
 
-
 html_baseurl = f"{PROJECT_ORGANISATION}.github.io/{PROJECT_NAME}"
 
 # -- Options for HTMLHelp output ------------------------------------------
