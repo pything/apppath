@@ -33,22 +33,10 @@ __all__ = [
 ]
 
 from typing import Any
+
+from warg import dist_is_editable
 from .app_path import *
 from .system_open_path_utilities import *
-
-
-def dist_is_editable(dist: Any) -> bool:
-    """
-    Return True if given Distribution is an editable installation."""
-    import sys
-    from pathlib import Path
-
-    for path_item in sys.path:
-        egg_link = Path(path_item) / f"{dist.project_name}.egg-link"
-        if egg_link.is_file():
-            return True
-    return False
-
 
 PROJECT_NAME = __project__.lower().strip().replace(" ", "_")
 PROJECT_VERSION = __version__
