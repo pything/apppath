@@ -2,9 +2,13 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+from importlib.metadata import PackageNotFoundError
 from warnings import warn
+from typing import Any
 
-import pkg_resources
+from importlib import resources
+from warg import package_is_editable
+
 
 __project__ = "Apppath"
 __author__ = "Christian Heider Nielsen"
@@ -32,9 +36,6 @@ __all__ = [
     # "PACKAGE_DATA_PATH"
 ]
 
-from typing import Any
-
-from warg import dist_is_editable
 from .app_path import *
 from .system_open_path_utilities import *
 
@@ -44,11 +45,11 @@ PROJECT_YEAR = 2018
 PROJECT_AUTHOR = __author__.lower().strip().replace(" ", "_")
 PROJECT_ORGANISATION = "Pything"
 
-distributions = {v.key: v for v in pkg_resources.working_set}
-if PROJECT_NAME in distributions:
-    distribution = distributions[PROJECT_NAME]
-    DEVELOP = dist_is_editable(distribution)
-else:
+PACKAGE_DATA_PATH = resources.files(PROJECT_NAME) / "data"
+
+try:
+    DEVELOP = package_is_editable(PROJECT_NAME)
+except PackageNotFoundError as e:
     DEVELOP = True
 
 

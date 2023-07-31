@@ -88,8 +88,7 @@ rst_epilog = """
 """
 '''
 
-# import pkg_resources
-# version = pkg_resources.get_distribution('myproject').version
+
 version = PROJECT_VERSION
 release = version  # 'master'
 
