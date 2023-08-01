@@ -2,13 +2,17 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+from importlib.metadata import PackageNotFoundError
 from warnings import warn
+from typing import Any
 
-import pkg_resources
+from importlib import resources
+from warg import package_is_editable
+
 
 __project__ = "Apppath"
 __author__ = "Christian Heider Nielsen"
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __doc__ = r"""
 Created on 27/04/2019
 
@@ -32,23 +36,8 @@ __all__ = [
     # "PACKAGE_DATA_PATH"
 ]
 
-from typing import Any
 from .app_path import *
 from .system_open_path_utilities import *
-
-
-def dist_is_editable(dist: Any) -> bool:
-    """
-    Return True if given Distribution is an editable installation."""
-    import sys
-    from pathlib import Path
-
-    for path_item in sys.path:
-        egg_link = Path(path_item) / f"{dist.project_name}.egg-link"
-        if egg_link.is_file():
-            return True
-    return False
-
 
 PROJECT_NAME = __project__.lower().strip().replace(" ", "_")
 PROJECT_VERSION = __version__
@@ -56,11 +45,11 @@ PROJECT_YEAR = 2018
 PROJECT_AUTHOR = __author__.lower().strip().replace(" ", "_")
 PROJECT_ORGANISATION = "Pything"
 
-distributions = {v.key: v for v in pkg_resources.working_set}
-if PROJECT_NAME in distributions:
-    distribution = distributions[PROJECT_NAME]
-    DEVELOP = dist_is_editable(distribution)
-else:
+PACKAGE_DATA_PATH = resources.files(PROJECT_NAME) / "data"
+
+try:
+    DEVELOP = package_is_editable(PROJECT_NAME)
+except PackageNotFoundError as e:
     DEVELOP = True
 
 
