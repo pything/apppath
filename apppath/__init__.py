@@ -12,7 +12,7 @@ from warg import package_is_editable
 
 __project__ = "Apppath"
 __author__ = "Christian Heider Nielsen"
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __doc__ = r"""
 Created on 27/04/2019
 
