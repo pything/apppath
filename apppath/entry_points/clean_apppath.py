@@ -5,7 +5,7 @@ from shutil import rmtree
 
 from apppath import AppPath
 
-__author__ = "Christian Heider Nielsen"
+__author__ = "Christian Heider Lindbjerg"
 __doc__ = r"""This script will clean a apppath directory of an app"""
 
 

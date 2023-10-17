@@ -12,8 +12,8 @@ except (ModuleNotFoundError, ImportError) as e:
 from warg import package_is_editable, clean_string, get_version
 
 __project__ = "Apppath"
-__author__ = "Christian Heider Nielsen"
-__version__ = "1.0.4"
+__author__ = "Christian Heider Lindbjerg"
+__version__ = "1.0.5"
 __doc__ = r"""
 Created on 27/04/2019
 
