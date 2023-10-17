@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-__author__ = "Christian Heider Nielsen"
+__author__ = "Christian Heider Lindbjerg"
 __doc__ = ""
 
 from apppath import AppPath

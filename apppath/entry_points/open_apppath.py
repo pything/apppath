@@ -4,7 +4,7 @@ import argparse
 
 from apppath import AppPath
 
-__author__ = "Christian Heider Nielsen"
+__author__ = "Christian Heider Lindbjerg"
 __doc__ = r"""This script will open data the directory of an app"""
 
 from apppath.system_open_path_utilities import AppPathSubDirEnum, open_app_path
