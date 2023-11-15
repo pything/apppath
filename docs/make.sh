@@ -7,4 +7,3 @@ cd "${PARENT}" || exit
 for f in Makefile; do
   make -f "$f" html || exit
 done
-

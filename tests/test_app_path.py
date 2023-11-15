@@ -62,7 +62,7 @@ def test_no_author(app_name):
     dirs.clean()
 
 
-"""
+IGNORE = """
 @pytest.fixture(autouse=True)
 def run_around_tests():
     #Before

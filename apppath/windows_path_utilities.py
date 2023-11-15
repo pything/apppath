@@ -37,7 +37,7 @@ def _get_win_folder_from_registry(csidl_name: Any) -> Any:
     return ddir
 
 
-'''
+IGNORE = '''
 import ctypes
 from ctypes.wintypes import HWND, UINT, WPARAM, LPARAM, LPVOID
 LRESULT = LPARAM  # synonymous
@@ -102,7 +102,7 @@ def remove_envvar_path(folder):
     Environment.set(PATH_VAR, os.pathsep.join(keepers))
 '''
 
-"""
+IGNORE2 = """
 
 import _winreg as reg
 import win32gui
@@ -112,7 +112,7 @@ import win32con
 # read the value
 key = reg.OpenKey(reg.HKEY_CURRENT_USER, 'Environment', 0, reg.KEY_ALL_ACCESS)
 # use this if you need to modify the system variable and if you have admin privileges
-#key = reg.OpenKey(reg.HKEY_LOCAL_MACHINE, r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 0, reg.KEY_ALL_ACCESS) 
+#key = reg.OpenKey(reg.HKEY_LOCAL_MACHINE, r'SYSTEM\CurrentControlSet\Control\Session Manager\Environment', 0, reg.KEY_ALL_ACCESS)
 try
     value, _ = reg.QueryValueEx(key, 'PATH')
 except WindowsError:
