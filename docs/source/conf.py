@@ -79,7 +79,7 @@ rst_prolog = f"""
 .. |PROJECT_NAME| replace:: {PROJECT_NAME}
 """
 
-'''
+IGNORE = '''
 rst_epilog = """
 .. |PROJECT_NAME| replace:: {PROJECT_NAME}
 .. |PROJECT_VERSION| replace:: {PROJECT_VERSION}

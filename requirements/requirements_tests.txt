@@ -1,5 +1,5 @@
-pytest
-mock
 -r requirements_dev.txt
+mock
+pytest
 
 #apppath
