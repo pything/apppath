@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 __author__ = "Christian Heider Lindbjerg"
 __doc__ = ""
@@ -37,7 +36,7 @@ def _get_win_folder_from_registry(csidl_name: Any) -> Any:
     return ddir
 
 
-IGNORE = '''
+IGNORE = r'''
 import ctypes
 from ctypes.wintypes import HWND, UINT, WPARAM, LPARAM, LPVOID
 LRESULT = LPARAM  # synonymous
@@ -102,7 +101,7 @@ def remove_envvar_path(folder):
     Environment.set(PATH_VAR, os.pathsep.join(keepers))
 '''
 
-IGNORE2 = """
+IGNORE2 = r"""
 
 import _winreg as reg
 import win32gui
