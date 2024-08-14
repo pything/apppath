@@ -1,10 +1,54 @@
 fail_fast: true
 repos:
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.17.0
+    hooks:
+      - id: pyupgrade
+        args:
+          - --py38-plus
+          - --keep-runtime-typing
+
   - repo: https://github.com/ambv/black
-    rev: 23.11.0
+    rev: 24.8.0
     hooks:
       - id: black
         language_version: python3.10
+
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.19
+    hooks:
+      - id: validate-pyproject
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.11.1
+    hooks:
+      - id: mypy
+        verbose: true
+        #exclude: ^tests/
+        entry: bash -c 'mypy "$@" || true' -- # only print
+        #args: [ --strict ]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.1 # pick a git hash / tag to point to
+    hooks:
+      - id: flake8 # stop the build if there are Python syntax errors or undefined names
+        additional_dependencies: [flake8-docstrings]
+        exclude: ^exclude*
+        args:
+          - --count
+          - --select=E9,F63,F7,F82
+          - --show-source
+          - --statistics
+      - id: flake8 # only warn
+        additional_dependencies: [flake8-docstrings]
+        exclude: ^exclude*
+        args:
+          - --count
+          - --exit-zero
+          - --max-complexity=10
+          - --max-line-length=127
+          - --statistics
+
   - repo: local
     hooks:
       - id: pytest-check
@@ -13,30 +57,6 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
-  - repo: local
-    hooks:
-      - id: flake8-check1 # stop the build if there are Python syntax errors or undefined names
-        name: flake8-check1
-        entry: flake8 apppath --count --select=E9,F63,F7,F82 --show-source --statistics
-        language: system
-        pass_filenames: false
-        always_run: true
-  - repo: local
-    hooks:
-      - id: flake8-check2 # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        name: flake8-check2
-        entry: flake8 apppath --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        language: system
-        pass_filenames: false
-        always_run: true
-  #  - repo: local
-  #    hooks:
-  #      - id: sphinx-check
-  #        name: sphinx-check
-  #        entry: docs/make.sh
-  #        language: script
-  #        types: [ python ]
-  #        pass_filenames: false
 
   #  - repo: local
   #    hooks:
@@ -111,7 +131,7 @@ repos:
 
   # Prettier
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+    rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
         types: [yaml]
@@ -128,7 +148,7 @@ repos:
   #          ]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0 # Use the ref you want to point at
+    rev: v4.6.0 # Use the ref you want to point at
     hooks:
       - id: check-added-large-files
         name: check for added large files
@@ -275,12 +295,6 @@ repos:
         entry: fix-byte-order-marker
         language: python
         types: [text]
-      - id: fix-encoding-pragma
-        name: fix python encoding pragma
-        description: "adds # -*- coding: utf-8 -*- to the top of python files."
-        language: python
-        entry: fix-encoding-pragma
-        types: [python]
       - id: forbid-new-submodules
         name: forbid new submodules
         description: prevents addition of new git submodules.
@@ -293,12 +307,6 @@ repos:
         entry: mixed-line-ending
         language: python
         types: [text]
-      #      - id: name-tests-test
-      #        name: tests should end in _test.py
-      #        description: this verifies that test files are named correctly.
-      #        entry: name-tests-test
-      #        language: python
-      #        files: (^|/)tests/.+\.py$
       - id: no-commit-to-branch
         name: "don't commit to branch"
         entry: no-commit-to-branch

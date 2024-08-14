@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 
 __author__ = "Christian Heider Lindbjerg"
@@ -16,7 +15,7 @@ from warg import ensure_existence, sanitise_path
 from warg.os_utilities.platform_selection import SystemEnum, get_system
 
 
-class AppPath(object):
+class AppPath:
     r"""
     AppPath class for easing cross-platform access to proper app data directories
     This class is an abstraction for getting system conventional application paths for data, logs, etc.
