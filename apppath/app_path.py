@@ -9,6 +9,7 @@ __all__ = ["AppPath"]
 import os
 import shutil
 from pathlib import Path
+from typing import Any
 
 from apppath.windows_path_utilities import get_win_folder
 from warg import ensure_existence, sanitise_path
@@ -123,10 +124,22 @@ class AppPath:
         self._multi_path = multi_path
         self._ensure_existence = ensure_existence_on_access
 
-    def __divmod__(self, other):
+    def __divmod__(self, other: Any) -> None:
+        """
+
+        :raises ArithmeticError:
+        :param other:
+        :return:
+        """
         return self.__truediv__(other)
 
-    def __truediv__(self, other):
+    def __truediv__(self, other: Any) -> None:
+        """
+
+        :raises ArithmeticError:
+        :param other:
+        :return:
+        """
         raise ArithmeticError(
             "The AppPath class itself is not a Path, you should use one of it path properties ("
             'e.g. ".user_data"  or ".user_config")'
@@ -831,16 +844,16 @@ class AppPath:
             shutil.rmtree(self.site_data)
 
     @property
-    def app_name(self):
+    def app_name(self) -> str:
         """description"""
         return self._app_name
 
     @property
-    def app_author(self):
+    def app_author(self) -> str:
         """description"""
         return self._app_author
 
-    def app_version(self):
+    def app_version(self) -> str:
         """description"""
         return self._app_version
 
