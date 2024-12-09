@@ -5,7 +5,7 @@ from warg import clean_string, get_version, package_is_editable
 
 __project__ = "Apppath"
 __author__ = "Christian Heider Lindbjerg"
-__version__ = "1.0.8"
+__version__ = "1.0.9"
 __doc__ = r"""
 Created on 27/04/2019
 
