@@ -1,7 +1,7 @@
 fail_fast: true
 repos:
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.17.0
+    rev: v3.19.0
     hooks:
       - id: pyupgrade
         args:
@@ -15,12 +15,12 @@ repos:
         language_version: python3.10
 
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.19
+    rev: v0.23
     hooks:
       - id: validate-pyproject
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.11.1
+    rev: v1.13.0
     hooks:
       - id: mypy
         verbose: true
@@ -93,7 +93,7 @@ repos:
   #    - id: pydocstyle
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.17
+    rev: 0.7.19
     hooks:
       - id: mdformat
         additional_dependencies:
@@ -148,7 +148,7 @@ repos:
   #          ]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0 # Use the ref you want to point at
+    rev: v5.0.0 # Use the ref you want to point at
     hooks:
       - id: check-added-large-files
         name: check for added large files
@@ -190,7 +190,7 @@ repos:
         entry: check-executables-have-shebangs
         language: python
         types: [text, executable]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
       - id: check-json
         name: check json
         description: checks json files for parseable syntax.
@@ -203,7 +203,7 @@ repos:
         entry: check-shebang-scripts-are-executable
         language: python
         types: [text]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
       - id: pretty-format-json
         name: pretty format json
         description: sets a standard for formatting json files.
@@ -282,7 +282,7 @@ repos:
         entry: end-of-file-fixer
         language: python
         types: [text]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
       - id: file-contents-sorter
         name: file contents sorter
         description: sorts the lines in specified files (defaults to alphabetical). you must provide list of target files as input in your .pre-commit-config.yaml file.
@@ -331,4 +331,4 @@ repos:
         entry: trailing-whitespace-fixer
         language: python
         types: [text]
-        stages: [commit, push, manual]
+        stages: [pre-commit, pre-push, manual]
