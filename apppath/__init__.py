@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from pathlib import Path
 
 from warg import clean_string, get_version, package_is_editable

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 __author__ = "Christian Heider Lindbjerg"
